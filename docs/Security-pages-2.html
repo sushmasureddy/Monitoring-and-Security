@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Governance: Frameworks, Standards, Thumb Rules, Methodologies, NIST, ISO &mdash; Security  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=218eca70" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Identity &amp; Access Security: Keystone" href="Security-pages-3.html" />
+    <link rel="prev" title="Cloud Infrastructure Security Guide" href="Security-pages-1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Security
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Monitoring Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-1.html">OpenStack Cloud Infrastructure Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-1.html#deployment-overview">Deployment Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-2.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-2.html#core-openstack-api-services-nova-neutron-keystone-glance">Core OpenStack API Services (Nova, Neutron, Keystone, Glance)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-3.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-4.html">Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-5.html">Updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-6.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-7.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-8.html">Tools Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-8.html#tools-comparison">Tools Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-9.html">Alerts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-10.html">RunBook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-10.html#ceph-osd-down-degraded-pgs">Ceph OSD Down / Degraded PGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-11.html">OpenStack Cluster Integrated with Ceph Monitoring Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-11.html#mechanics">Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-12.html">Recommended Deployment: Prometheus + Grafana Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html">Alternative Approaches Considered</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html#zabbix-route">Zabbix Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html#telegraf-influxdb-grafana-route">Telegraf + InfluxDB + Grafana Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-14.html">Comparison: Best Tool for Monitoring the Integrated OpenStack + Ceph Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html">Final Recommendation: Best Tool for Monitoring OpenStack Integrated with Ceph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html#why-prometheus-grafana-is-the-best-choice">Why Prometheus + Grafana Is the Best Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html#how-prometheus-grafana-works-mechanics">How Prometheus + Grafana Works (Mechanics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html#result">Result</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-16.html">Ownership and Escalation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-16.html#severity-and-response-table">Severity and Response Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-17.html">Access and Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-17.html#requesting-access-step-by-step">Requesting Access Step by Step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-18.html">18. Appendix A: Glossary of Terms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-1.html">Cloud Infrastructure Security Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Governance: Frameworks, Standards, Thumb Rules, Methodologies, NIST, ISO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#frameworks">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#standards">Standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thumb-rules">Thumb Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methodologies">Methodologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nist">NIST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iso">ISO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-3.html">Identity &amp; Access Security: Keystone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-4.html">Network Security &amp; Segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-5.html">Data Encryption: In Transit and At Rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-6.html">Secrets Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-7.html">Host &amp; Container Hardening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-8.html">Vulnerability &amp; Patch Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-9.html">Storage Security: Ceph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-10.html">Detection, Audit Logging &amp; the “Single Tool” Question</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-10.html#is-there-a-single-tool-that-secures-everything">Is There a Single Tool That Secures Everything?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-11.html">Policy &amp; API Hardening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-12.html">Backup &amp; Recovery Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-13.html">Verification: Internal Penetration Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-14.html">Security Runbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-14.html#suspected-credential-compromise">Suspected Credential Compromise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-15.html">–
+<strong>Term</strong>      <strong>Definition in this document’s context</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-15.html#defense-in-layering-multiple-independent-security-controls-so-no-depth-single-failure-results-in-full-compromise">Defense in    Layering multiple independent security controls so no
+Depth         single failure results in full compromise.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-16.html">Closing Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-16.html#what-to-revisit-first">What to Revisit First</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-16.html#appendix-a-consolidated-command-reference">Appendix A: Consolidated Command Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Governance: Frameworks, Standards, Thumb Rules, Methodologies, NIST, ISO</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Security-pages-2.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="governance-frameworks-standards-thumb-rules-methodologies-nist-iso">
+<h1>Governance: Frameworks, Standards, Thumb Rules, Methodologies, NIST, ISO<a class="headerlink" href="#governance-frameworks-standards-thumb-rules-methodologies-nist-iso" title="Link to this heading"></a></h1>
+<p>Rather than inventing a security approach from nothing, this
+deployment’s controls are mapped onto established, external frameworks
+and standards. This section walks through what each governance concept
+actually is, why it earns a place in this document, and exactly how it
+applies to this OpenStack deployment specifically, the real documents
+and reasoning behind every technical control in Sections 3 to 12.</p>
+<section id="frameworks">
+<h2>Frameworks<a class="headerlink" href="#frameworks" title="Link to this heading"></a></h2>
+<p>A framework is a ready-made structure, built and refined by people
+outside this deployment, that lays out what categories of things need to
+be secured so that a security plan is never built from a completely
+blank page. Without one, it is easy to secure whatever comes to mind
+first and quietly miss entire categories that were never even
+considered, a framework’s real value is guaranteeing coverage, not
+prescribing exact settings.</p>
+<p>Three frameworks do that job here, each at a different altitude. NIST
+CSF supplies the five-stage skeleton, Identify, Protect, Detect,
+Respond, Recover, that this entire document is built around. The
+OpenStack Security Guide supplies advice that already understands
+Keystone, Nova, and Neutron, rather than generic IT guidance that would
+need translating into OpenStack terms. CIS Benchmarks go a level deeper
+still, supplying checklist-level hardening steps for the Ubuntu hosts
+and Docker containers specifically, at a level of granularity neither of
+the other two frameworks reach.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Framework</p></th>
+<th class="head"><p>What it provides</p></th>
+<th class="head"><p>Applied to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NIST Cybersecurity Framework (CSF)</p></td>
+<td><p>Identify / Protect / Detect / Respond / Recover structure</p></td>
+<td><p>The overall structure of this entire document</p></td>
+</tr>
+<tr class="row-odd"><td><p>OpenStack Security Guide</p></td>
+<td><p>Official, OpenStack-specific security practice</p></td>
+<td><p>Every OpenStack-specific technical control in Sections 3 to 12</p></td>
+</tr>
+<tr class="row-even"><td><p>CIS Benchmarks</p></td>
+<td><p>Checklist-style Linux and Docker hardening</p></td>
+<td><p>Section 7, host and container hardening, scored via Lynis</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="standards">
+<h2>Standards<a class="headerlink" href="#standards" title="Link to this heading"></a></h2>
+<p>A standard is a formal, usually externally published, rulebook that
+defines precisely what “secure” means for a given area, precise enough
+that compliance against it can actually be checked and certified, not
+just asserted. Where a framework says what categories to cover, a
+standard is specific enough that someone outside this deployment, a
+client, an auditor, a regulator, can verify the work independently
+instead of relying on a self-assessment.</p>
+<p>ISO/IEC 27001 and 27002 govern the security program and its detailed
+control list respectively. CIS Benchmarks double as a standard as well
+as a framework, since the same checklist produces a numeric, comparable
+score. CSA CCM earns its place specifically because it was written for
+cloud and IaaS platforms like OpenStack, not adapted from generic
+on-premises IT guidance.</p>
+<p>PCI-DSS only becomes relevant the moment any tenant workload processes
+payment card data, at which point its segmentation requirements line up
+closely with what Section 4 already implements.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Standard</p></th>
+<th class="head"><p>What it certifies</p></th>
+<th class="head"><p>Applied to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ISO/IEC 27001</p></td>
+<td><p>That an actual Information Security Management System (ISMS) exists, ownership, risk assessment, review cadence</p></td>
+<td><p>Governance of the security program itself, not individual technical settings</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO/IEC 27002</p></td>
+<td><p>Detailed control list companion to 27001</p></td>
+<td><p>Cross-checked against the technical controls in Sections 3 and 5 (access control, cryptography)</p></td>
+</tr>
+<tr class="row-even"><td><p>CIS Benchmarks</p></td>
+<td><p>Scored hardening baseline for Linux and Docker</p></td>
+<td><p>Host/container hardening scoring in Section 7</p></td>
+</tr>
+<tr class="row-odd"><td><p>CSA Cloud Controls Matrix (CCM)</p></td>
+<td><p>Cloud/IaaS-specific control matrix</p></td>
+<td><p>Cross-reference for multi-tenant, virtualized infrastructure controls</p></td>
+</tr>
+<tr class="row-even"><td><p>PCI-DSS</p></td>
+<td><p>Payment card data handling requirements</p></td>
+<td><p>Only if a tenant workload processes card payment data, segmentation rules align closely with Section 4</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="thumb-rules">
+<h2>Thumb Rules<a class="headerlink" href="#thumb-rules" title="Link to this heading"></a></h2>
+<p>A thumb rule is a short, always-true guiding sentence that requires no
+lookup at all, the fast, memorizable version of a framework or standard
+for the moments when there genuinely is no time to consult NIST SP
+800-53 before making a call. Frameworks and standards are long
+documents; thumb rules are what actually gets carried in someone’s head
+during an incident or a routine configuration decision.</p>
+<p>Each rule below is stated as its concrete OpenStack-specific
+application, not as an abstract principle.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thumb Rule</p></th>
+<th class="head"><p>OpenStack-Specific Application</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Least privilege, always</p></td>
+<td><p>No user or service is granted the admin role in Keystone unless it is strictly required</p></td>
+</tr>
+<tr class="row-odd"><td><p>Deny by default</p></td>
+<td><p>Every security group starts closed; only explicitly required ports are opened</p></td>
+</tr>
+<tr class="row-even"><td><p>Never trust the network by default</p></td>
+<td><p>Tenant networks can never reach RabbitMQ, MariaDB, or Ceph mon ports, internal does not mean safe</p></td>
+</tr>
+<tr class="row-odd"><td><p>Assume breach</p></td>
+<td><p>Network segmentation is designed and tested as if an attacker is already inside one compromised node</p></td>
+</tr>
+<tr class="row-even"><td><p>Patch on a schedule, not when remembered</p></td>
+<td><p>Every container image is scanned with Trivy and kolla-ansible pull is run on a fixed cadence</p></td>
+</tr>
+<tr class="row-odd"><td><p>Every secret rotates</p></td>
+<td><p>passwords.yml is never left plaintext; service credentials rotate on a defined schedule</p></td>
+</tr>
+<tr class="row-even"><td><p>Log everything, but alert only on what matters</p></td>
+<td><p>CADF audit logs are always on, but alert rules are tuned to avoid noise</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="methodologies">
+<h2>Methodologies<a class="headerlink" href="#methodologies" title="Link to this heading"></a></h2>
+<p>A methodology is the underlying way of thinking applied while every
+control above gets implemented, it is what tells someone how to reason
+about a brand-new situation that is not already written down anywhere in
+this document. Controls without a shared methodology behind them tend to
+turn into an unrelated pile of settings; the methodology is the thread
+that keeps every new decision consistent with the ones that came before
+it.</p>
+<p>Three methodologies are actively applied throughout this deployment’s
+design: Defense in Depth, Zero Trust, and Threat Modeling, each
+addressing a different failure mode.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Methodology</p></th>
+<th class="head"><p>OpenStack-Specific Application</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Defense in Depth</p></td>
+<td><p>No single control is trusted alone, network segmentation, Keystone RBAC, and TLS all exist independently, so one failure does not cascade into full compromise</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zero Trust</p></td>
+<td><p>Internal service-to-service traffic, such as Nova calling Neutron, is still authenticated rather than automatically trusted because it originates “inside” the cluster</p></td>
+</tr>
+<tr class="row-even"><td><p>Threat Modeling</p></td>
+<td><p>Before a new Kolla role is enabled (for example, Zun or Octavia), the first question asked is what attack surface it introduces and who would target it, not simply whether it works</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nist">
+<h2>NIST<a class="headerlink" href="#nist" title="Link to this heading"></a></h2>
+<p>NIST, the U.S. National Institute of Standards and Technology, publishes
+free, vendor-neutral security frameworks and standards that carry weight
+across the industry well beyond government contexts. Because NIST is not
+tied to selling any product, its guidance holds a kind of credibility a
+vendor’s own “best practices” document simply cannot claim, and
+referencing it gives internal security decisions external legitimacy.</p>
+<p>Three specific NIST publications are used here, each at a different
+level of detail.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Document</p></th>
+<th class="head"><p>Role in This Document</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NIST CSF</p></td>
+<td><p>Supplies the top-level five-stage structure (Identify/Protect/Detect/Respond/Recover) the whole document follows</p></td>
+</tr>
+<tr class="row-odd"><td><p>NIST SP 800-190</p></td>
+<td><p>Container-specific security guidance, directly relevant since every OpenStack service in this deployment runs as a Docker container via Kolla</p></td>
+</tr>
+<tr class="row-even"><td><p>NIST SP 800-53</p></td>
+<td><p>A much deeper control catalog, kept as a reference in case this deployment is ever required to serve government or regulated workloads, where 800-53 alignment is often contractually required</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="iso">
+<h2>ISO<a class="headerlink" href="#iso" title="Link to this heading"></a></h2>
+<p>ISO, the International Organization for Standardization, publishes
+internationally recognized standards; ISO/IEC 27001 and 27002
+specifically cover information security management. Where NIST largely
+describes which controls to have, ISO 27001 describes how to run
+security as an ongoing program, who owns it, how often it gets reviewed,
+how risk gets assessed in the first place. Without that layer, security
+has a strong tendency to be done once at deployment time and then
+quietly forgotten.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Standard</p></th>
+<th class="head"><p>Role in This Document</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ISO/IEC 27001</p></td>
+<td><p>Governs the security program, who is responsible for reviewing Keystone RBAC quarterly, who re-tests network segmentation, how often this document itself is revisited</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO/IEC 27002</p></td>
+<td><p>The technical control checklist cross-referenced against Sections 3 and 5 of this document, so each control can be traced back to a specific ISO clause instead of being ad hoc</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Security-pages-1.html" class="btn btn-neutral float-left" title="Cloud Infrastructure Security Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Security-pages-3.html" class="btn btn-neutral float-right" title="Identity &amp; Access Security: Keystone" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, sushma and swetha.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

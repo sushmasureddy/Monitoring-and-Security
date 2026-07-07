@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Final Recommendation Best Tool for Monitoring OpenStack Integrated with Ceph &mdash; Security  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=218eca70" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Ownership and Escalation" href="Monitoring-pages-16.html" />
+    <link rel="prev" title="Comparison: Best Tool for Monitoring the Integrated OpenStack + Ceph Cluster" href="Monitoring-pages-14.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Security
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Monitoring Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-1.html">OpenStack Cloud Infrastructure Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-1.html#deployment-overview">Deployment Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-2.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-2.html#core-openstack-api-services-nova-neutron-keystone-glance">Core OpenStack API Services (Nova, Neutron, Keystone, Glance)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-3.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-4.html">Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-5.html">Updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-6.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-7.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-8.html">Tools Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-8.html#tools-comparison">Tools Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-9.html">Alerts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-10.html">RunBook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-10.html#ceph-osd-down-degraded-pgs">Ceph OSD Down / Degraded PGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-11.html">OpenStack Cluster Integrated with Ceph Monitoring Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-12.html">Recommended Deployment: Prometheus + Grafana Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html">Alternative Approaches Considered</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html#zabbix-route">Zabbix Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html#telegraf-influxdb-grafana-route">Telegraf + InfluxDB + Grafana Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-14.html">Comparison: Best Tool for Monitoring the Integrated OpenStack + Ceph Cluster</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Final Recommendation Best Tool for Monitoring OpenStack Integrated with Ceph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prometheus-the-collector">Prometheus (the collector)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grafana-the-display">Grafana ( the display)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alertmanager-the-notifier">Alertmanager (the notifier)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-by-step-process-production-setup">Step-by-Step Process Production Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#result">Result</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-16.html">Ownership and Escalation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-16.html#severity-and-response-table">Severity and Response Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-17.html">Access and Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-17.html#requesting-access-step-by-step">Requesting Access Step by Step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-18.html">Appendix A: Glossary of Terms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-1.html">Cloud Infrastructure Security Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-2.html">Governance: Frameworks, Standards, Thumb Rules, Methodologies, NIST, ISO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-3.html">Identity &amp; Access Security: Keystone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-4.html">Network Security &amp; Segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-5.html">Data Encryption: In Transit and At Rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-6.html">Secrets Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-7.html">Host &amp; Container Hardening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-8.html">Vulnerability &amp; Patch Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-9.html">Storage Security: Ceph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-10.html">Detection, Audit Logging &amp; the “Single Tool” Question</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-11.html">Policy &amp; API Hardening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-12.html">Backup &amp; Recovery Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-13.html">Verification: Internal Penetration Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-14.html">Security Runbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-14.html#suspected-credential-compromise">Suspected Credential Compromise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-16.html">Closing Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-16.html#appendix-a-consolidated-command-reference">Appendix A: Consolidated Command Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Final Recommendation Best Tool for Monitoring OpenStack Integrated with Ceph</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Monitoring-pages-15.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="final-recommendation-best-tool-for-monitoring-openstack-integrated-with-ceph">
+<h1>Final Recommendation Best Tool for Monitoring OpenStack Integrated with Ceph<a class="headerlink" href="#final-recommendation-best-tool-for-monitoring-openstack-integrated-with-ceph" title="Link to this heading"></a></h1>
+<p><strong>After evaluating all available options (Zabbix, Ceph Dashboard alone,
+Telegraf + InfluxDB + Grafana, ELK/OpenSearch alone, Nagios/Icinga, two
+separate Grafana instances, and newer 2026 tools such as
+VictoriaMetrics, SigNoz, Datadog, and Last9), Prometheus + Grafana, run
+as one shared instance, is confirmed as the best and final tool for
+monitoring the entire OpenStack deployment integrated with Ceph on a
+single dashboard.</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Why Prometheus + Grafana Is the Best Choice</strong></p>
+<ul class="simple">
+<li><p>Kolla-Ansible already deploys Prometheus and Grafana by default,
+with exporters for Nova, Neutron, Keystone, Cinder, HAProxy,
+MariaDB, RabbitMQ, and hosts  no new tool needs to be
+introduced.</p></li>
+<li><p>Ceph natively exposes a Prometheus-compatible /metrics endpoint
+via ‘ceph mgr module enable prometheus’ on port 9283  no
+separate agent or exporter is required.</p></li>
+<li><p>Adding Ceph as one more scrape target in the same prometheus.yml
+Kolla-Ansible manages brings both systems into one Prometheus
+instance.</p></li>
+<li><p>Importing Ceph’s official Grafana dashboards (Cluster, OSD, Pool,
+RBD Overview) into the same Grafana that holds the OpenStack
+dashboards produces a single, unified view.</p></li>
+<li><p>Cross-domain panels can be built  e.g., Cinder volume creation
+time next to Ceph pool IOPS</p></li>
+</ul>
+</li>
+</ol>
+<p>showing immediately whether a slowdown originates in the compute/API
+layer or the Ceph storage backend.</p>
+<ul class="simple">
+<li><p>One Alertmanager/Grafana Alerting pipeline routes both OpenStack and
+Ceph alerts to the same notification channel.</p></li>
+<li><p>No licensing cost, no third-party data sharing, and no custom
+integration scripts, unlike every alternative evaluated.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>How Prometheus + Grafana Works (Mechanics)</strong></p></li>
+</ol>
+<section id="prometheus-the-collector">
+<h2>Prometheus (the collector)<a class="headerlink" href="#prometheus-the-collector" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Works on a “pull” model it reaches out to targets on a timer
+(default 15–30 seconds) instead of waiting for them to send data.</p></li>
+<li><p>Each target (an “exporter”) runs a tiny web server exposing a
+/metrics page in plain text.</p></li>
+<li><p>Prometheus reads that page, timestamps every value, and stores it in
+its own built-in time-series database on disk.</p></li>
+<li><p>Nothing else in the stack collects data Grafana and Alertmanager both
+depend on Prometheus already having it.</p></li>
+</ul>
+</section>
+<section id="grafana-the-display">
+<h2>Grafana ( the display)<a class="headerlink" href="#grafana-the-display" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Connects to Prometheus as a “data source” and runs PromQL queries
+behind the scenes when a dashboard is opened.</p></li>
+<li><p>Turns the returned numbers into graphs, gauges, and tables.</p></li>
+<li><p>Allows importing ready-made dashboards (JSON files) instead of
+building panels from scratch.</p></li>
+</ul>
+</section>
+<section id="alertmanager-the-notifier">
+<h2>Alertmanager (the notifier)<a class="headerlink" href="#alertmanager-the-notifier" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Prometheus itself decides when something is wrong, based on rules
+written in advance (e.g., “OSD down for 5+ minutes”).</p></li>
+<li><p>It hands the firing alert to Alertmanager, which groups similar
+alerts, avoids duplicate pings, and sends the notification to
+Slack/email.</p></li>
+</ul>
+</section>
+<section id="step-by-step-process-production-setup">
+<h2>Step-by-Step Process Production Setup<a class="headerlink" href="#step-by-step-process-production-setup" title="Link to this heading"></a></h2>
+<p><img alt="Monitoring Architecture" src="_images/img-3.png" /></p>
+<ul class="simple">
+<li><p>Enable the stack in Kolla-Ansible : set enable_prometheus: “yes” and
+enable_grafana: “yes” in globals.yml.</p></li>
+<li><p>Deploy it  run ‘kolla-ansible reconfigure’ (or deploy); Kolla
+installs Prometheus, Grafana, and the OpenStack exporters as
+containers automatically, and wires the scrape config.</p></li>
+<li><p>Turn on Ceph’s own metrics endpoint  run ‘ceph mgr module enable
+prometheus’ on the Ceph cluster; this exposes /metrics on port 9283,
+no agent required.</p></li>
+<li><p>Point Prometheus at Ceph  add the Ceph mgr node’s IP and port 9283
+as one more entry in the scrape_configs section of prometheus.yml.</p></li>
+<li><p>Restart/reload Prometheus so it picks up the new target  check the
+Prometheus “Targets” page to confirm Ceph shows as UP.</p></li>
+<li><p>Import dashboards into Grafana  use the official dashboard IDs
+(OpenStack: 9701/21085, Ceph: 2842) so both sets of panels exist in
+the same Grafana instance.</p></li>
+<li><p>Build cross-domain panels  place an OpenStack metric and a Ceph
+metric on the same panel (e.g., Cinder volume creation time next to
+Ceph pool IOPS) so cause and effect are visible together.</p></li>
+<li><p>Write alert rules covering both systems (OSD down, Galera desync, disk
+full, HAProxy backend down) and route them through Alertmanager to one
+shared channel.</p></li>
+<li><p>Verify end-to-end  trigger a test alert, confirm it reaches
+Slack/email, and confirm both OpenStack and Ceph panels update live in
+Grafana.</p></li>
+</ul>
+</section>
+<section id="result">
+<h2>Result<a class="headerlink" href="#result" title="Link to this heading"></a></h2>
+<p>Once these steps are complete, opening one Grafana URL shows the health
+of the entire OpenStack deployment and the Ceph storage backend on a
+single screen  instance counts, service status, database quorum, and
+Ceph OSD/pool health sit alongside correlated performance graphs (Cinder
+next to Ceph latency, Nova boot time next to pool IOPS) and live alerts,
+giving operators one place to look during both routine checks and
+incident response.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Monitoring-pages-14.html" class="btn btn-neutral float-left" title="Comparison: Best Tool for Monitoring the Integrated OpenStack + Ceph Cluster" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Monitoring-pages-16.html" class="btn btn-neutral float-right" title="Ownership and Escalation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, sushma and swetha.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

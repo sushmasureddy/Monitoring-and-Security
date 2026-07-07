@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monitoring &mdash; Security  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=218eca70" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Maintenance" href="Monitoring-pages-3.html" />
+    <link rel="prev" title="OpenStack Cloud Infrastructure Operations Guide" href="Monitoring-pages-1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Security
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Monitoring Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-1.html">OpenStack Cloud Infrastructure Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-1.html#deployment-overview">Deployment Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#core-openstack-api-services-nova-neutron-keystone-glance">Core OpenStack API Services (Nova, Neutron, Keystone, Glance)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#storage-monitoring-ceph-backend">Storage Monitoring Ceph Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#application-orchestration-services-horizon-heat-octavia-zun">Application &amp; Orchestration Services (Horizon, Heat, Octavia, Zun)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#infrastructure-layer-database-messaging-load-balancing">Infrastructure Layer (Database, Messaging, Load Balancing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#host-container-layer">Host &amp; Container Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-this-combination-over-a-single-all-in-one-tool">Why This Combination Over a Single All-in-One Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-3.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-4.html">Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-5.html">Updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-6.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-7.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-8.html">Tools Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-8.html#tools-comparison">Tools Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-9.html">Alerts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-10.html">RunBook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-10.html#ceph-osd-down-degraded-pgs">Ceph OSD Down / Degraded PGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-11.html">OpenStack Cluster Integrated with Ceph Monitoring Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-11.html#mechanics">Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-12.html">Recommended Deployment: Prometheus + Grafana Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html">Alternative Approaches Considered</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html#zabbix-route">Zabbix Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html#telegraf-influxdb-grafana-route">Telegraf + InfluxDB + Grafana Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-14.html">Comparison: Best Tool for Monitoring the Integrated OpenStack + Ceph Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html">Final Recommendation: Best Tool for Monitoring OpenStack Integrated with Ceph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html#why-prometheus-grafana-is-the-best-choice">Why Prometheus + Grafana Is the Best Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html#how-prometheus-grafana-works-mechanics">How Prometheus + Grafana Works (Mechanics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html#result">Result</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-16.html">Ownership and Escalation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-16.html#severity-and-response-table">Severity and Response Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-17.html">Access and Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-17.html#requesting-access-step-by-step">Requesting Access Step by Step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-18.html">18. Appendix A: Glossary of Terms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-1.html">Cloud Infrastructure Security Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-2.html">Governance: Frameworks, Standards, Thumb Rules, Methodologies, NIST, ISO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-3.html">Identity &amp; Access Security: Keystone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-4.html">Network Security &amp; Segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-5.html">Data Encryption: In Transit and At Rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-6.html">Secrets Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-7.html">Host &amp; Container Hardening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-8.html">Vulnerability &amp; Patch Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-9.html">Storage Security: Ceph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-10.html">Detection, Audit Logging &amp; the “Single Tool” Question</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-11.html">Policy &amp; API Hardening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-12.html">Backup &amp; Recovery Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-13.html">Verification: Internal Penetration Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-14.html">Security Runbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-14.html#suspected-credential-compromise">Suspected Credential Compromise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-16.html">Closing Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-16.html#appendix-a-consolidated-command-reference">Appendix A: Consolidated Command Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Monitoring</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Monitoring-pages-2.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="monitoring">
+<h1>Monitoring<a class="headerlink" href="#monitoring" title="Link to this heading"></a></h1>
+<p>Overall monitoring stack and why metrics and logs are kept as separate
+pipelines:</p>
+<ul class="simple">
+<li><p>Prometheus performs metrics collection and alerting rules; Grafana
+provides dashboards; Alertmanager handles notification routing.</p></li>
+<li><p>An OpenSearch/Fluentd pipeline (Fluentd or Fluent Bit, OpenSearch,
+OpenSearch Dashboards) handles centralized logs.</p></li>
+<li><p>Metrics and logs are two separate pipelines on purpose: metrics show
+that something is wrong and when; logs show why.</p></li>
+<li><p>The same exporter-based pattern is reused across every OpenStack
+service, so operators only need to learn one model.</p></li>
+</ul>
+<blockquote>
+<div><p><img alt="Monitoring Architecture" src="_images/img-1.png" /></p>
+</div></blockquote>
+</section>
+<section id="core-openstack-api-services-nova-neutron-keystone-glance">
+<h1>Core OpenStack API Services (Nova, Neutron, Keystone, Glance)<a class="headerlink" href="#core-openstack-api-services-nova-neutron-keystone-glance" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Nova, Neutron, Keystone, and Glance are monitored via
+openstack-exporter, which polls each API on an interval and converts
+the response into Prometheus metrics.</p></li>
+<li><p>Nova: instance states, hypervisor stats, and resource usage, plus
+node_exporter for host-level CPU/RAM/disk on compute nodes.</p></li>
+<li><p>Neutron: L3/DHCP/OVS agent up-down status and port/network counts,
+plus blackbox_exporter ICMP/TCP probes on floating IPs and VIPs to
+confirm real reachability.</p></li>
+<li><p>Keystone: blackbox HTTP probes for API reachability and token issuance
+latency, since every other service depends on Keystone being up.</p></li>
+<li><p>Glance: node_exporter tracks image-store disk usage (a full store
+blocks new builds) alongside openstack-exporter’s image list/status,
+correlated on one Grafana panel.</p></li>
+<li><p>Nagios/Zabbix-style tools were skipped here because they need manual
+plugin scripts for OpenStack APIs; Ceilometer/Gnocchi was skipped as
+heavier and largely deprecated.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Primary Tool</p></th>
+<th class="head"><p>Key Signal</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Nova (Compute)</p></td>
+<td><p>openstack-exporter + node_exporter</p></td>
+<td><p>Instance/hypervisor state, host resources</p></td>
+</tr>
+<tr class="row-odd"><td><p>Neutron (Networking)</p></td>
+<td><p>openstack-exporter + blackbox_exporter</p></td>
+<td><p>Agent status, floating IP/VIP reachability</p></td>
+</tr>
+<tr class="row-even"><td><p>Keystone (Identity)</p></td>
+<td><p>blackbox_exporter (HTTP probe)</p></td>
+<td><p>Endpoint availability, token latency</p></td>
+</tr>
+<tr class="row-odd"><td><p>Glance (Image)</p></td>
+<td><p>openstack-exporter + node_exporter</p></td>
+<td><p>Image status, store disk usage</p></td>
+</tr>
+</tbody>
+</table>
+<section id="storage-monitoring-ceph-backend">
+<h2>Storage Monitoring Ceph Backend<a class="headerlink" href="#storage-monitoring-ceph-backend" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Storage monitoring is Ceph-first because the actual persistent data
+lives on Ceph, not on the Cinder API itself (see section 1.2).</p></li>
+<li><p>ceph-mgr runs a Prometheus plugin exposing OSD up/down/in/out state,
+placement group (PG) status, pool capacity/usage, and cluster I/O
+throughput and latency.</p></li>
+<li><p>This sits underneath the Cinder/Glance API checks: the API layer shows
+whether an operation succeeded; the Ceph layer shows why it might be
+slow or failing.</p></li>
+<li><p>A degraded PG count or a downed OSD is exactly the kind of backend
+problem that causes slow or failed volume attach/detach without ever
+appearing as a Cinder-level error.</p></li>
+<li><p>Monitoring only the Cinder API and skipping the Ceph layer is the
+single most common gap in OpenStack monitoring setups.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Layer</p></th>
+<th class="head"><p>Tool</p></th>
+<th class="head"><p>Key Signal</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ceph cluster</p></td>
+<td><p>ceph-mgr Prometheus module</p></td>
+<td><p>OSD state, PG health, pool capacity</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cinder API</p></td>
+<td><p>openstack-exporter</p></td>
+<td><p>Volume state counts (available/in-use/error)</p></td>
+</tr>
+<tr class="row-even"><td><p>Glance API</p></td>
+<td><p>openstack-exporter</p></td>
+<td><p>Image status, backed by Ceph RBD pool</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="application-orchestration-services-horizon-heat-octavia-zun">
+<h2>Application &amp; Orchestration Services (Horizon, Heat, Octavia, Zun)<a class="headerlink" href="#application-orchestration-services-horizon-heat-octavia-zun" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Horizon: blackbox_exporter issues an HTTPS GET against the login page
+(status code, response time, cert expiry) since a process-level check
+can pass while the app itself is broken.</p></li>
+<li><p>Heat: openstack-exporter reports stack counts by status
+(CREATE_COMPLETE, FAILED); Fluentd tails heat-engine logs to
+OpenSearch so OpenSearch Dashboards can surface the root cause.</p></li>
+<li><p>Octavia: openstack-exporter polls loadbalancer/listener/pool/member
+status; blackbox_exporter probes the VIP:port directly, since amphora
+status alone can miss a misconfigured listener.</p></li>
+<li><p>Zun: cAdvisor reads cgroups for true per-container CPU/memory/network,
+since the Zun API alone only shows reported state, not actual
+consumption.</p></li>
+<li><p>Each of these services is watched on both a control-plane signal and a
+data-plane/user-facing signal, not just one.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Primary Tool</p></th>
+<th class="head"><p>Key Signal</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Horizon (Dashboard)</p></td>
+<td><p>blackbox_exporter (HTTP probe)</p></td>
+<td><p>Page load status, TLS cert expiry</p></td>
+</tr>
+<tr class="row-odd"><td><p>Heat (Orchestration)</p></td>
+<td><p>openstack-exporter + Fluentd logs</p></td>
+<td><p>Stack status, failure root cause</p></td>
+</tr>
+<tr class="row-even"><td><p>Octavia (Load Balancer)</p></td>
+<td><p>openstack-exporter + blackbox_exporter</p></td>
+<td><p>Amphora state, VIP reachability</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zun (Containers)</p></td>
+<td><p>cAdvisor + Prometheus</p></td>
+<td><p>Per-container CPU/memory/network</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="infrastructure-layer-database-messaging-load-balancing">
+<h2>Infrastructure Layer (Database, Messaging, Load Balancing)<a class="headerlink" href="#infrastructure-layer-database-messaging-load-balancing" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>MariaDB/Galera: mysqld_exporter runs as a monitoring user and reports
+wsrep_* variables — node state, replication lag, and cluster quorum.</p></li>
+<li><p>Generic host monitoring alone will not show replication lag or
+split-brain risk, which is why a MySQL-aware exporter is required.</p></li>
+<li><p>RabbitMQ: the Prometheus plugin exposes queue depth, message rates,
+and consumer counts, since queue backlog is the earliest sign of an
+overloaded service (e.g. Nova conductor falling behind).</p></li>
+<li><p>HAProxy: haproxy_exporter reads the stats socket for backend up/down
+state and request metrics, combined with a blackbox_exporter probe
+directly on the VIP.</p></li>
+<li><p>The HAProxy + VIP combination catches cases where HAProxy’s own view
+of a backend disagrees with reality due to a check misconfiguration.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Primary Tool</p></th>
+<th class="head"><p>Key Signal</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MariaDB / Galera</p></td>
+<td><p>mysqld_exporter + Grafana Galera dashboard</p></td>
+<td><p>Node state, replication lag, quorum</p></td>
+</tr>
+<tr class="row-odd"><td><p>RabbitMQ</p></td>
+<td><p>RabbitMQ Prometheus plugin</p></td>
+<td><p>Queue depth, unacked messages</p></td>
+</tr>
+<tr class="row-even"><td><p>HAProxy + Keepalived (VIP)</p></td>
+<td><p>haproxy_exporter + blackbox_exporter</p></td>
+<td><p>Backend health, VIP failover</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="host-container-layer">
+<h2>Host &amp; Container Layer<a class="headerlink" href="#host-container-layer" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Every Kolla-Ansible service runs as a Docker container, so container
+restart counts and resource limits are a first-line signal across the
+deployment.</p></li>
+<li><p>cAdvisor exposes per-container state and restart counts; Docker’s own
+HEALTHCHECK directive (built into Kolla images) flags unhealthy
+containers.</p></li>
+<li><p>node_exporter runs on every node and exposes CPU, memory, disk I/O,
+filesystem, and network metrics in Prometheus format.</p></li>
+<li><p>Alertmanager fires a notification whenever a defined threshold — e.g.
+disk usage above 85% — is crossed.</p></li>
+<li><p>Vendor dashboards (iDRAC/iLO) or ad hoc ‘top’/’htop’ checks were not
+used as the primary signal since they give a snapshot, not historical
+trend data or automated alerts.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Layer</p></th>
+<th class="head"><p>Tool</p></th>
+<th class="head"><p>Key Signal</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Docker containers (Kolla runtime)</p></td>
+<td><p>cAdvisor + Docker healthchecks</p></td>
+<td><p>Restart counts, unhealthy containers</p></td>
+</tr>
+<tr class="row-odd"><td><p>Host / OS (all nodes)</p></td>
+<td><p>node_exporter + Alertmanager</p></td>
+<td><p>CPU, memory, disk, network thresholds</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-this-combination-over-a-single-all-in-one-tool">
+<h2>Why This Combination Over a Single All-in-One Tool<a class="headerlink" href="#why-this-combination-over-a-single-all-in-one-tool" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Commercial all-in-one suites (Zabbix, SolarWinds, Datadog) can
+technically monitor everything, but need paid licensing at
+data-center scale.</p></li>
+<li><p>Zabbix was evaluated directly for this deployment and would still need
+custom scripts to understand Nova, Neutron, and Ceph the way
+openstack-exporter and ceph-mgr already do natively.</p></li>
+<li><p>Prometheus + Grafana + exporters is open source and container-native,
+fitting the Kolla/Docker model directly rather than fighting it.</p></li>
+<li><p>A purpose-built openstack-exporter is maintained specifically for
+OpenStack API monitoring.</p></li>
+<li><p>Alertmanager handles alert routing and deduplication without needing a
+separate paid alerting product.</p></li>
+<li><p>The full comparison against every alternative considered, including
+newer 2026 tools, is presented in sections 13 and 14.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Monitoring-pages-1.html" class="btn btn-neutral float-left" title="OpenStack Cloud Infrastructure Operations Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Monitoring-pages-3.html" class="btn btn-neutral float-right" title="Maintenance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, sushma and swetha.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

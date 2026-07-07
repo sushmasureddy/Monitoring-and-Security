@@ -1,0 +1,23 @@
+table.docutils {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    border: 1px solid #d0d0d0;
+}
+table.docutils th {
+    background-color: #ffffff;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px 14px;
+    border: 1px solid #d0d0d0;
+}
+table.docutils td {
+    padding: 10px 14px;
+    border: 1px solid #d0d0d0;
+}
+table.docutils tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+h2, h3 {
+    color: #0e8a6f;
+}

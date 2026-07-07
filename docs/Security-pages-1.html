@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Infrastructure Security Guide &mdash; Security  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=218eca70" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Governance: Frameworks, Standards, Thumb Rules, Methodologies, NIST, ISO" href="Security-pages-2.html" />
+    <link rel="prev" title="18. Appendix A: Glossary of Terms" href="Monitoring-pages-18.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Security
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Monitoring Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-1.html">OpenStack Cloud Infrastructure Operations Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-1.html#deployment-overview">Deployment Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-2.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-2.html#core-openstack-api-services-nova-neutron-keystone-glance">Core OpenStack API Services (Nova, Neutron, Keystone, Glance)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-3.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-4.html">Backup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-5.html">Updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-6.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-7.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-8.html">Tools Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-8.html#tools-comparison">Tools Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-9.html">Alerts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-10.html">RunBook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-10.html#ceph-osd-down-degraded-pgs">Ceph OSD Down / Degraded PGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-11.html">OpenStack Cluster Integrated with Ceph Monitoring Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-11.html#mechanics">Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-12.html">Recommended Deployment: Prometheus + Grafana Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html">Alternative Approaches Considered</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html#zabbix-route">Zabbix Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-13.html#telegraf-influxdb-grafana-route">Telegraf + InfluxDB + Grafana Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-14.html">Comparison: Best Tool for Monitoring the Integrated OpenStack + Ceph Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html">Final Recommendation: Best Tool for Monitoring OpenStack Integrated with Ceph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html#why-prometheus-grafana-is-the-best-choice">Why Prometheus + Grafana Is the Best Choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html#how-prometheus-grafana-works-mechanics">How Prometheus + Grafana Works (Mechanics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-15.html#result">Result</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-16.html">Ownership and Escalation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-16.html#severity-and-response-table">Severity and Response Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-17.html">Access and Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-17.html#requesting-access-step-by-step">Requesting Access Step by Step</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Monitoring-pages-18.html">18. Appendix A: Glossary of Terms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cloud Infrastructure Security Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#executive-summary">Executive Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#security-overview">Security Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-open-source-changes-the-security-approach">Why Open Source Changes the Security Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deployment-components-in-scope">Deployment Components in Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-ten-security-areas">The Ten Security Areas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-2.html">Governance: Frameworks, Standards, Thumb Rules, Methodologies, NIST, ISO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-3.html">Identity &amp; Access Security: Keystone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-4.html">Network Security &amp; Segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-5.html">Data Encryption: In Transit and At Rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-6.html">Secrets Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-7.html">Host &amp; Container Hardening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-8.html">Vulnerability &amp; Patch Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-9.html">Storage Security: Ceph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-10.html">Detection, Audit Logging &amp; the “Single Tool” Question</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-10.html#is-there-a-single-tool-that-secures-everything">Is There a Single Tool That Secures Everything?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-11.html">Policy &amp; API Hardening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-12.html">Backup &amp; Recovery Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-13.html">Verification: Internal Penetration Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-14.html">Security Runbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-14.html#suspected-credential-compromise">Suspected Credential Compromise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-15.html">–
+<strong>Term</strong>      <strong>Definition in this document’s context</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-15.html#defense-in-layering-multiple-independent-security-controls-so-no-depth-single-failure-results-in-full-compromise">Defense in    Layering multiple independent security controls so no
+Depth         single failure results in full compromise.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-16.html">Closing Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-16.html#what-to-revisit-first">What to Revisit First</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Security-pages-16.html#appendix-a-consolidated-command-reference">Appendix A: Consolidated Command Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Cloud Infrastructure Security Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Security-pages-1.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cloud-infrastructure-security-guide">
+<h1>Cloud Infrastructure Security Guide<a class="headerlink" href="#cloud-infrastructure-security-guide" title="Link to this heading"></a></h1>
+<section id="executive-summary">
+<h2>Executive Summary<a class="headerlink" href="#executive-summary" title="Link to this heading"></a></h2>
+<p>This document consolidates every security area, control, framework,
+standard, and methodology relevant to this multi-node OpenStack data
+center deployment, built with Kolla-Ansible. It is organized the same
+way the deployment’s monitoring documentation is organized, by area,
+with the actual implementation detail alongside each control, not just
+the concept.</p>
+<p>The quick-reference table below is the condensed, ten-area summary. Full
+reasoning and step-by-step implementation for every row follows in the
+numbered sections after it.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Security Area</p></th>
+<th class="head"><p>Control</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Access control</p></td>
+<td><p>Keystone RBAC, least privilege, MFA on admin accounts, application credentials</p></td>
+</tr>
+<tr class="row-odd"><td><p>Network segmentation</p></td>
+<td><p>Separate management, tenant, and storage/Ceph networks; deny-by-default security groups</p></td>
+</tr>
+<tr class="row-even"><td><p>Data encryption</p></td>
+<td><p>TLS internal + external on all APIs and Horizon; Ceph OSD encryption at rest; Barbican-backed volume encryption</p></td>
+</tr>
+<tr class="row-odd"><td><p>Secrets management</p></td>
+<td><p>kolla-genpwd passwords.yml, encrypted in Ansible Vault; scheduled credential rotation</p></td>
+</tr>
+<tr class="row-even"><td><p>Host / container hardening</p></td>
+<td><p>CIS Benchmark scoring via Lynis; Trivy image scanning; fail2ban; unused services disabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>Patch management</p></td>
+<td><p>CVE tracking for OpenStack components and base container images; scheduled kolla-ansible pull/deploy</p></td>
+</tr>
+<tr class="row-even"><td><p>Storage security (Ceph)</p></td>
+<td><p>CephX authentication always on; admin keyring access tightly restricted; per-tenant pool isolation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Audit logging</p></td>
+<td><p>Keystone/Nova/Neutron CADF logs shipped to OpenSearch for a full who-did-what-when trail</p></td>
+</tr>
+<tr class="row-even"><td><p>Intrusion / anomaly detection</p></td>
+<td><p>auditd on every host for system-call tracking and file-integrity/privilege-escalation monitoring, with its own dedicated alert path</p></td>
+</tr>
+<tr class="row-odd"><td><p>Backup security</p></td>
+<td><p>Encrypted backups, regularly tested restores, offsite copy held to the same access controls as production</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="security-overview">
+<h2>Security Overview<a class="headerlink" href="#security-overview" title="Link to this heading"></a></h2>
+<p>This deployment runs every OpenStack service, Nova, Neutron, Keystone,
+Glance, Cinder, Heat, Octavia, Horizon, as an open-source Docker
+container, orchestrated by Kolla-Ansible across multiple nodes in a
+physical data center.</p>
+<p>Because every component is open source, every known vulnerability in it
+is public the moment it is disclosed. There is no vendor silently
+patching in the background and no single company responsible for the
+code’s safety. That responsibility sits entirely with whoever operates
+the deployment, which is the reason this document treats security as a
+continuous, layered discipline rather than a one-time setup checklist.</p>
+<p>The structure of this document borrows the five-stage cycle from the
+NIST Cybersecurity Framework: know what is running (Identify), lock it
+down (Protect), watch for intrusion (Detect), act when something happens
+(Respond), and get back to normal cleanly (Recover). Every section from
+here onward maps to one of these five stages, and that mapping is made
+explicit in Section 17.</p>
+<section id="why-open-source-changes-the-security-approach">
+<h3>Why Open Source Changes the Security Approach<a class="headerlink" href="#why-open-source-changes-the-security-approach" title="Link to this heading"></a></h3>
+<p>An open-source deployment is not inherently less secure than a
+commercial one, but it does shift where responsibility sits.
+Vulnerabilities in Nova, Neutron, Ceph, RabbitMQ, or Docker itself are
+public knowledge the instant they are disclosed, there is no vendor
+absorbing a delay window before a patch quietly ships. Anyone, including
+an attacker, can read the exact source code running in this deployment,
+so security here cannot lean on obscurity; it has to come from correctly
+applied, verifiable controls.</p>
+<p>This also means patch responsibility is entirely operator-side.
+Subscribing to OpenStack Security Notes (OSSN) and the individual
+advisories for Ceph, RabbitMQ, MariaDB, and Docker is not an optional
+nicety, it is the only early-warning system that exists for this
+deployment. The advantage that comes with this openness is that
+defensive tooling and documentation are just as freely available as the
+source code itself: the exporters, security guides, and hardening
+benchmarks referenced throughout this document are the direct benefit of
+the same openness that creates the risk in the first place.</p>
+</section>
+<section id="deployment-components-in-scope">
+<h3>Deployment Components in Scope<a class="headerlink" href="#deployment-components-in-scope" title="Link to this heading"></a></h3>
+<p>Every component below is a real attack surface and is addressed
+explicitly somewhere in this document.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Layer</p></th>
+<th class="head"><p>Components / Containers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identity</p></td>
+<td><p>Keystone</p></td>
+</tr>
+<tr class="row-odd"><td><p>Compute</p></td>
+<td><p>Nova, nova-compute, nova-conductor, nova-scheduler</p></td>
+</tr>
+<tr class="row-even"><td><p>Networking</p></td>
+<td><p>Neutron, OVS/OVN agents, L3/DHCP agents</p></td>
+</tr>
+<tr class="row-odd"><td><p>Image</p></td>
+<td><p>Glance</p></td>
+</tr>
+<tr class="row-even"><td><p>Block Storage</p></td>
+<td><p>Cinder API/scheduler/volume</p></td>
+</tr>
+<tr class="row-odd"><td><p>Storage Backend</p></td>
+<td><p>Ceph (mon, osd, mgr, rgw)</p></td>
+</tr>
+<tr class="row-even"><td><p>Orchestration</p></td>
+<td><p>Heat</p></td>
+</tr>
+<tr class="row-odd"><td><p>Load Balancing</p></td>
+<td><p>Octavia, amphora instances</p></td>
+</tr>
+<tr class="row-even"><td><p>Dashboard</p></td>
+<td><p>Horizon</p></td>
+</tr>
+<tr class="row-odd"><td><p>Containers (tenant)</p></td>
+<td><p>Zun, cAdvisor</p></td>
+</tr>
+<tr class="row-even"><td><p>Database</p></td>
+<td><p>MariaDB / Galera cluster</p></td>
+</tr>
+<tr class="row-odd"><td><p>Messaging</p></td>
+<td><p>RabbitMQ</p></td>
+</tr>
+<tr class="row-even"><td><p>Edge / VIP</p></td>
+<td><p>HAProxy, Keepalived</p></td>
+</tr>
+<tr class="row-odd"><td><p>Secrets</p></td>
+<td><p>Barbican</p></td>
+</tr>
+<tr class="row-even"><td><p>Monitoring / Logging</p></td>
+<td><p>Prometheus, Grafana, Alertmanager, Fluentd, OpenSearch</p></td>
+</tr>
+<tr class="row-odd"><td><p>Host layer</p></td>
+<td><p>Docker Engine, Ubuntu 24.04 host OS, all nodes</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note on scope: the monitoring/logging layer listed above (Prometheus,
+Grafana, Alertmanager, Fluentd, OpenSearch) is the infrastructure
+observability stack covered in the deployment’s separate monitoring
+documentation. Security detection, covered in Section 10 of this
+document, is a deliberately separate concern with its own dedicated
+tooling, the two are related but are not the same pipeline.</p>
+</section>
+<section id="the-ten-security-areas">
+<h3>The Ten Security Areas<a class="headerlink" href="#the-ten-security-areas" title="Link to this heading"></a></h3>
+<p>Every control in this document falls under one of these ten areas, this
+is the master list the rest of the document is organized around.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Area</p></th>
+<th class="head"><p>One-line purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Identity / Access control</p></td>
+<td><p>Controls who can log in and what they are allowed to do</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Network segmentation</p></td>
+<td><p>Controls which traffic can reach which service</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Data encryption</p></td>
+<td><p>Protects data in transit and at rest</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Secrets management</p></td>
+<td><p>Protects passwords, keys, and tokens</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Host / container hardening</p></td>
+<td><p>Reduces what an attacker can do on a compromised node</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Patch / vulnerability management</p></td>
+<td><p>Closes known security holes before exploitation</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Storage security (Ceph)</p></td>
+<td><p>Protects the data layer underneath Cinder and Glance</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Detection / audit logging</p></td>
+<td><p>Notices intrusions and records who did what</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Policy / API hardening</p></td>
+<td><p>Fine-grained control over individual API actions</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Backup / recovery security</p></td>
+<td><p>The last line of defense if every other control fails</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Monitoring-pages-18.html" class="btn btn-neutral float-left" title="18. Appendix A: Glossary of Terms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Security-pages-2.html" class="btn btn-neutral float-right" title="Governance: Frameworks, Standards, Thumb Rules, Methodologies, NIST, ISO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, sushma and swetha.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
