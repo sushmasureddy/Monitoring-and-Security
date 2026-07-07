@@ -3,7 +3,6 @@
 Terms used throughout this document, defined in plain language for
 readers without prior OpenStack or Ceph background.
 
-  --
   | Term | Meaning |
 |---|---|
 | OSD (Object Storage Daemon) | The Ceph process that manages one physical disk, storing and serving the actual data. |
