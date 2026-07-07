@@ -1,4 +1,4 @@
-# 15. Glossary of Terms
+# Glossary of Terms
 
 | Term | Definition in this document's context |
 |---|---|
