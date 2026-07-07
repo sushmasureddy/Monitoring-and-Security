@@ -102,7 +102,6 @@ pipelines:
 | Zun (Containers) | cAdvisor + Prometheus | Per-container CPU/memory/network |
 
 ## Infrastructure Layer (Database, Messaging, Load Balancing)
-
 - MariaDB/Galera: mysqld_exporter runs as a monitoring user and reports
   wsrep_* variables — node state, replication lag, and cluster quorum.
 
